@@ -21,10 +21,10 @@ export const siteConfig = {
   // Placeholder social links — swap in the real profile URLs; leave any
   // entry pointing at "#" if that platform isn't set up yet.
   socials: {
-    facebook: "#",
+    facebook: "https://www.facebook.com/share/1bywW3esWZ/",
     instagram: "#",
     twitter: "#",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/company/111418104",
   },
   nav: [
     { label: "Home", href: "/" },
@@ -51,7 +51,7 @@ export const siteConfig = {
         "Repayments deducted straight from payroll",
         "Approved on your salary, not just your credit history",
         "Funds released within 24 hours of approval",
-        "Flexible terms from 1 to 12 months",
+        "Flexible terms from 1 to 24 months",
       ],
       stat: { value: "24 hrs", label: "Average payout" },
     },
@@ -65,10 +65,11 @@ export const siteConfig = {
       features: [
         "Working capital, stock, or equipment financing",
         "Repayment schedules built around your cash flow",
-        "No collateral required on smaller facilities",
+        "Collateral might required",
         "A dedicated contact through every stage of the loan",
+        "Tenure up to 4 months",
       ],
-      stat: { value: "US$50k", label: "Up to, per facility" },
+      stat: { value: "US$30k", label: "Up to, per facility" },
     },
     {
       label: "Collateral Based Loans",
@@ -80,7 +81,7 @@ export const siteConfig = {
       features: [
         "Secure larger amounts against property, vehicles, or equipment",
         "Lower interest rates than unsecured lending",
-        "Extended repayment terms, up to 36 months",
+        "Extended repayment terms, up to 4 months",
         "Independent, transparent asset valuation",
       ],
       stat: { value: "36 mo", label: "Maximum term" },
