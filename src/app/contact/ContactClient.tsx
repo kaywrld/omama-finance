@@ -325,6 +325,59 @@ export default function ContactClient() {
             })}
           </div>
 
+          {/* Branches */}
+          {siteConfig.branches.length > 0 && (
+            <Reveal delay={0.26}>
+              <div className="mt-5">
+                <div className="font-mono text-[11px] font-semibold tracking-widest text-gold-light uppercase">
+                  Our Branches
+                </div>
+                <div className="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                  {siteConfig.branches.map((branch) => (
+                    <div
+                      key={branch.name}
+                      className="rounded-2xl bg-white p-6"
+                    >
+                      <div className="font-heading text-base font-bold text-primary">
+                        {branch.name}
+                      </div>
+                      <div className="mt-3 space-y-2 text-sm text-muted">
+                        <div className="flex items-start gap-2">
+                          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                          <span>{branch.address}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Phone className="h-4 w-4 shrink-0 text-gold" />
+                          <a
+                            href={`tel:${branch.phone.replace(/\s+/g, "")}`}
+                            className="hover:text-primary"
+                          >
+                            {branch.phone}
+                          </a>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Mail className="h-4 w-4 shrink-0 text-gold" />
+                          <a
+                            href={`mailto:${branch.email}`}
+                            className="hover:text-primary"
+                          >
+                            {branch.email}
+                          </a>
+                        </div>
+                        {branch.hours && (
+                          <div className="flex items-start gap-2">
+                            <Clock className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                            <span>{branch.hours}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          )}
+
           {/* Working hours banner */}
           <Reveal delay={0.3}>
             <div className="mt-5 flex flex-col gap-5 rounded-2xl bg-white p-7 sm:flex-row sm:items-center">

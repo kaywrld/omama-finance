@@ -3,6 +3,7 @@ import { Intro } from "@/components/home/Intro";
 import { HowToApply } from "@/components/home/HowToApply";
 import { Services } from "@/components/home/Services";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
+import { Team } from "@/components/home/Team";
 import { TrustedBy } from "@/components/home/TrustedBy";
 
 // This page has no per-request data yet, so Next.js serves it as a static,
@@ -22,6 +23,7 @@ export default function HomePage() {
       <Services />
       <HowToApply />
       <WhyChooseUs />
+      <Team />
       <TrustedBy />
     </div>
   );

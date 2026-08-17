@@ -18,6 +18,46 @@ export const siteConfig = {
     hoursNote:
     "Loan applications are accepted 24/7 : apply any time, we'll process it when we're back in office.",
   },
+  // One entry per physical office. Add a new object here whenever a
+  // branch opens — the Contact page (see BRANCHES.map in
+  // ContactClient.tsx) picks up new entries automatically, no other
+  // code changes needed. Keep `phone`/`whatsapp`/`email` per-branch even
+  // if they're the same as head office for now, so each branch can get
+  // its own line later without restructuring.
+  branches: [
+    {
+      name: "Head Office – Harare",
+      address: "Crn J Moyo & 1st Street, Galaxy Mall, 3rd Floor, Room 3, Harare, Zimbabwe",
+      phone: "+263 778 709 007",
+      whatsapp: "263778709007",
+      email: "info@omamafinance.co.zw",
+      hours: "Mon – Fri: 8:00 AM – 4:30 PM, Saturday: 8:00 AM – 1:00 PM",
+    },
+    {
+      name: "Trabablas Branch",
+      address: "33 Tariro Township, Mbudzi People's Market Hall 8 Shop Number 5",
+      phone: "+263 774 370 923",
+      whatsapp: "263774370923",
+      email: "info@omamafinance.co.zw",
+      hours: "Mon – Fri: 8:00 AM – 4:30 PM",
+    },
+    {
+      name: "Chitungwiza Branch",
+      address: "Stand No. 37620 Shop 3 Unit G Makoni Business Centre, Chitungwiza",
+      phone: "+263 788 931 143",
+      whatsapp: "263788931143",
+      email: "info@omamafinance.co.zw",
+      hours: "Mon – Fri: 8:00 AM – 4:30 PM",
+    },
+    {
+      name: "Kadoma Branch",
+      address: "Milton Rd medical & Office Park 7 Milton Rd, Kadoma, Zimbabwe",
+      phone: "+263 778 709 007",
+      whatsapp: "263778709007",
+      email: "info@omamafinance.co.zw",
+      hours: "Mon – Fri: 8:00 AM – 4:30 PM",
+    },
+  ],
   // Placeholder social links — swap in the real profile URLs; leave any
   // entry pointing at "#" if that platform isn't set up yet.
   socials: {
@@ -29,6 +69,7 @@ export const siteConfig = {
   nav: [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
+    { label: "Our Team", href: "/team" },
     { label: "Contact", href: "/contact" },
   ] as const,
   // Placeholder service names/hrefs/images — replace with the real product
@@ -65,9 +106,9 @@ export const siteConfig = {
       features: [
         "Working capital, stock, or equipment financing",
         "Repayment schedules built around your cash flow",
-        "Collateral might required",
+        "Collateral is required",
         "A dedicated contact through every stage of the loan",
-        "Tenure up to 4 months",
+        "Tenure up to 4 months"
       ],
       stat: { value: "US$30k", label: "Up to, per facility" },
     },

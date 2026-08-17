@@ -24,7 +24,7 @@ export function Hero() {
       <Carousel slides={slides} />
 
       {/* Darkening gradient so white text stays readable over any photo. */}
-      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/80 via-black/80 to-black/80" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-b from-black/50 via-black/50 to-black/50" />
 
       {/* Text + CTAs, overlaid on top of the images. */}
       <div className="absolute inset-0 z-10 flex items-center">

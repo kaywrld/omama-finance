@@ -24,7 +24,7 @@ const steps = [
     // icon below (see imgError default state) instead of loading an
     // unrelated image. Add /public/how-to-apply/step-1.jpg and point this
     // at it whenever a real photo is ready.
-    image: "",
+    image: "/bg.webp",
     alt: "Filling in the loan application form",
   },
   {
