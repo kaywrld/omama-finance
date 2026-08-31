@@ -20,26 +20,33 @@ enum LoanApplicationStatus {
   DECLINED
 }
 
-// One row per submitted loan application form.
-// Kept intentionally flat/simple — this is a lead-capture form, not a loan ledger.
+// One row per submitted loan application form. Holds the key fields used
+// for lists/search as real columns, plus the complete submission (every
+// section of the paper form) as JSON in `formData` so nothing is lost even
+// as the form evolves. The emailed PDF is generated from `formData` at
+// submit time and is not re-derivable from the indexed columns alone.
 model LoanApplication {
-  id            Int                    @id @default(autoincrement())
-  fullName      String                 @db.VarChar(150)
-  email         String                 @db.VarChar(150)
-  phone         String                 @db.VarChar(30)
-  nationalId    String                 @db.VarChar(30)
-  loanAmount    Decimal                @db.Decimal(12, 2)
-  loanPurpose   String                 @db.VarChar(100)
-  monthlyIncome Decimal?               @db.Decimal(12, 2)
-  employer      String?                @db.VarChar(150)
-  notes         String?                @db.Text
+  id              Int                    @id @default(autoincrement())
+  applicationType String                 @db.VarChar(10)
+  loanType        String                 @db.VarChar(100)
+  fullName        String                 @db.VarChar(150)
+  email           String                 @db.VarChar(150)
+  phone           String                 @db.VarChar(30)
+  idNumber        String                 @db.VarChar(30)
+  loanAmount      Decimal                @db.Decimal(12, 2)
+  loanPurpose     String                 @db.VarChar(150)
+  guarantorName   String                 @db.VarChar(150)
+  guarantorPhone  String                 @db.VarChar(20)
 
-  status        LoanApplicationStatus  @default(PENDING)
-  emailSent     Boolean                @default(false)
+  // Full submission — every section of the paper form, keyed by field name.
+  formData        Json
 
-  ipAddress     String?                @db.VarChar(64)
-  createdAt     DateTime               @default(now())
-  updatedAt     DateTime               @updatedAt
+  status          LoanApplicationStatus  @default(PENDING)
+  emailSent       Boolean                @default(false)
+
+  ipAddress       String?                @db.VarChar(64)
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime               @updatedAt
 
   @@index([status])
   @@index([createdAt])

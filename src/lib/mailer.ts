@@ -64,6 +64,12 @@ export function isMailerConfigured(): boolean {
   );
 }
 
+/**
+ * Sends the staff notification for a submitted loan application. The full
+ * application (every section of the paper form) travels as the attached
+ * PDF — the email body itself is just a quick-glance summary so staff can
+ * triage from their inbox before opening the attachment.
+ */
 export async function sendLoanApplicationEmail(
   data: Omit<LoanApplicationInput, "website">,
   attachments: LoanApplicationAttachment[] = []
@@ -73,25 +79,27 @@ export async function sendLoanApplicationEmail(
     throw new Error("LOAN_NOTIFY_EMAIL is not configured");
   }
 
-  const rows: Array<[string, string]> = [
+  const summaryRows: Array<[string, string]> = [
+    ["Application type", data.applicationType],
     ["Loan type", data.loanType],
     ["Full name", data.fullName],
+    ["ID number", data.idNumber],
     ["Email", data.email],
     ["Phone", data.phone],
-    ["National ID", data.nationalId],
-    ["Address", data.address],
-    ["Loan amount", formatCurrency(data.loanAmount)],
-    ["Loan purpose", data.loanPurpose],
-    ...(data.monthlyIncome ? [["Monthly income", formatCurrency(data.monthlyIncome)] as [string, string]] : []),
-    ...(data.employer ? [["Employer", data.employer] as [string, string]] : []),
-    ...(data.notes ? [["Notes", data.notes] as [string, string]] : []),
+    ["Loan amount requested", formatCurrency(data.loanAmountRequested)],
+    ["Purpose of loan", data.loanPurpose],
+    ["Guarantor", `${data.guarantorName} (${data.guarantorPhone})`],
     [
-      "Supporting documents",
-      attachments.length > 0 ? `${attachments.length} file(s) attached` : "None provided",
+      "Attachments",
+      attachments.length > 0
+        ? `${attachments.length} file(s) — full application PDF ${
+            attachments.length > 1 ? "and supporting documents " : ""
+          }attached`
+        : "None",
     ],
   ];
 
-  const htmlRows = rows
+  const htmlRows = summaryRows
     .map(
       ([label, value]) =>
         `<tr><td style="padding:6px 12px;color:#5b5b58;font-family:sans-serif;font-size:13px;white-space:nowrap;">${escapeHtml(
@@ -103,12 +111,12 @@ export async function sendLoanApplicationEmail(
   const html = `
     <div style="font-family:sans-serif;max-width:560px;margin:0 auto;">
       <h2 style="color:#1c3d2e;">${escapeHtml(data.fullName)} has applied for a loan</h2>
-      <p style="color:#5b5b58;font-size:13px;">Submitted via the website loan application form. Please call or WhatsApp the applicant to follow up.</p>
+      <p style="color:#5b5b58;font-size:13px;">Submitted via the website loan application form. The complete application (every section of the paper form) is attached as a PDF. Please call or WhatsApp the applicant to follow up.</p>
       <table style="border-collapse:collapse;width:100%;">${htmlRows}</table>
     </div>
   `;
 
-  const text = rows.map(([label, value]) => `${label}: ${value}`).join("\n");
+  const text = summaryRows.map(([label, value]) => `${label}: ${value}`).join("\n");
 
   await getTransporter().sendMail({
     from: process.env.SMTP_FROM ?? process.env.SMTP_USER,

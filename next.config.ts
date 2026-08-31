@@ -1,9 +1,14 @@
 import type { NextConfig } from "next";
 
+// BUILD_TARGET=static  -> static export for omamafinance.co.zw (no Node needed)
+// BUILD_TARGET unset   -> normal server build for the API-only Node cPanel app
+const isStaticBuild = process.env.BUILD_TARGET === "static";
+
 const nextConfig: NextConfig = {
-  // Static HTML export - no Node.js server needed at all, so this can run
-  // on cPanel hosting with no Node/SSH support, just plain file hosting.
-  output: "export",
+  // Static HTML export only for the main site build. The API deployment
+  // needs a real server (nodemailer, prisma, PDF generation), so it must
+  // NOT use output:'export' - that mode disables API routes entirely.
+  ...(isStaticBuild ? { output: "export" as const } : {}),
 
   // Forces every route to output as folder/index.html (e.g. about/index.html)
   // instead of a flat about.html file. Apache serves folder/index.html

@@ -3,8 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "prisma generate",
     "dev": "next dev",
     "build": "next build",
+    "build:static": "cross-env BUILD_TARGET=static next build",
+    "build:server": "next build --webpack",
     "start": "next start",
     "lint": "eslint"
   },
@@ -16,6 +19,7 @@
     "lucide-react": "^1.31.0",
     "next": "16.3.0",
     "nodemailer": "^9.0.5",
+    "pdf-lib": "^1.17.1",
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "zod": "^4.4.3"
@@ -26,6 +30,7 @@
     "@types/nodemailer": "^8.0.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.0",
     "prisma": "6.19.3",

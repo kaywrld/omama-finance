@@ -19,7 +19,7 @@ export default function ApplyPage() {
       />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-primary/90" />
 
-      <div className="mx-auto max-w-2xl px-4 sm:px-6">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <div className="mb-8 text-center">
           <p className="font-mono text-xs uppercase tracking-widest text-gold-light">
             Get started
