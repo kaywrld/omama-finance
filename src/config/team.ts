@@ -34,7 +34,7 @@ export const TEAM = [
         "As Credit Risk Manager at Omama Finance, Bryan is responsible for overseeing the institution's credit portfolio, developing and implementing credit policies, strengthening risk management frameworks, monitoring portfolio quality, and supporting sustainable lending decisions. He works closely with executive management and operational teams to ensure that the company maintains prudent risk standards while expanding access to finance for individuals and businesses.",
         "His expertise includes credit appraisal, portfolio risk analysis, collections and recoveries oversight, compliance support, data-driven decision making, and performance monitoring. Bryan is passionate about leveraging analytics and technology to improve financial inclusion, enhance operational performance, and build resilient financial institutions. He is committed to driving responsible lending practices and contributing to the long-term growth and stability of Omama Finance.",
       ],
-      image: "",
+      image: "/bryan.jpeg",
     },
   ];
   

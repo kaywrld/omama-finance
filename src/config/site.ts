@@ -57,6 +57,14 @@ export const siteConfig = {
       email: "info@omamafinance.co.zw",
       hours: "Mon – Fri: 8:00 AM – 4:30 PM",
     },
+    {
+      name: "Gweru Branch",
+      address: "New Post Office, PD6, Crn 7th Street, and RG Mugabe, Gweru Zimbabwe",
+      phone: "+263 790 379 007",
+      whatsapp: "263790379007",
+      email: "info@omamafinance.co.zw",
+      hours: "Mon – Fri: 8:00 AM – 4:30 PM",
+    },
   ],
   // Placeholder social links — swap in the real profile URLs; leave any
   // entry pointing at "#" if that platform isn't set up yet.
